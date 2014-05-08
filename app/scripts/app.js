@@ -1,11 +1,11 @@
 'use strict';
 
-angular
-  .module('massiveWallhackApp', [
+var app = angular.module('massiveWallhackApp', [
     'ngResource',
     'ngRoute'
-  ])
-  .config(function ($routeProvider) {
+  ]);
+
+app.config(function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -15,3 +15,9 @@ angular
         redirectTo: '/'
       });
   });
+
+
+app.config(function($httpProvider) {
+    $httpProvider.defaults.useXDomain = true;
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
+});
