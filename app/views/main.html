@@ -1,7 +1,15 @@
-  <h3 class="text-muted">massive wallhack</h3>
+<h3 class="text-muted">massive wallhack</h3>
 
-  <ul>
-      <li ng-repeat="course in courses">
-          {{course.name}}
-      </li>
-  </ul>
+<div class="col-md-2">
+    <!--Sidebar content-->
+
+    Search: <input ng-model="query">
+
+</div>
+<div class="col-md-10">
+    <ul>
+        <li ng-repeat="course in courses|filter:query">
+            {{course.name}}
+        </li>
+    </ul>
+</div>
