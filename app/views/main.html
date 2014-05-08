@@ -1,15 +1,40 @@
-<h3 class="text-muted">massive wallhack</h3>
 
-<div class="col-md-2">
+
+<div class="row-fluid">
+  <div class="col-md-6 col-sm-6">
     <!--Sidebar content-->
+    <h3 class="text-muted">massive wallhack</h3>
+
 
     Search: <input ng-model="query">
-
-</div>
-<div class="col-md-10">
     <ul>
-        <li ng-repeat="course in courses|filter:query">
-            {{course.name}}
-        </li>
+      <li ng-repeat="course in courses|orderBy:'name'|filter:query">
+        <span class="btn btn-link" ng-click='showDetails = !showDetails'>{{course.name}}</span>
+
+        <div ng-show='showDetails'>
+          <input class="checkbox checkbox-inline" type="checkbox" ng-model='checked' ng-click="addOrRemoveFromEvents(checked, course)">
+          <span class="btn btn-link" ng-click='showLectures = !showLectures'>Luennot</span>
+          <div ng-show='showLectures'>
+            <ul>
+              <li ng-repeat="lecture in course.lectures">
+                {{lecture.start|date:'dd.MM. HH:mm'}}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </li>
     </ul>
+
+  </div>
+  <div class="col-md-6 col-sm-6">
+
+
+    <h4>Selected events:</h4>
+    <ul>
+      <li ng-repeat="event in events | orderBy:'start'">
+        {{event.name}} {{event.place}} {{event.start|date:'dd.MM. HH:mm'}} {{event.start}}
+      </li>
+    </ul>
+
+  </div>
 </div>

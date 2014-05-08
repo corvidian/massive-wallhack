@@ -6,7 +6,7 @@ app.factory('Courses', function($http) {
     var coursesService = {};
     coursesService.all = function() {
         return $http.get(URL);
-    }
+      }
 
     return coursesService;
-});
+  });
