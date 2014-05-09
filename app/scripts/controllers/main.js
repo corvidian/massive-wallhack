@@ -13,15 +13,14 @@ app.controller('MainCtrl', function ($scope, Courses) {
   $scope.addOrRemoveFromEvents = function (checked, course) {
     if (checked) {
       course.lectures.forEach(function (lecture) {
-        delete $scope.events[lecture.id];
+        delete $scope.events[lecture.event_id];
       });
     }
-
 
     else {
       course.lectures.forEach(function (lecture) {
         lecture.name = course.name + " luento";
-        $scope.events[lecture.id] = lecture;
+        $scope.events[lecture.event_id] = lecture;
       });
     }
 
