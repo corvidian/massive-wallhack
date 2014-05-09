@@ -1,7 +1,7 @@
 var app = angular.module('massiveWallhackApp');
 
 app.factory('Courses', function($http) {
-  var URL = 'http://localhost:3000/courses.json';
+  var URL = 'http://mustached-wookie.herokuapp.com/courses.json';
 
   var coursesService = {};
   coursesService.all = function() {
@@ -12,7 +12,7 @@ app.factory('Courses', function($http) {
 });
 
 app.factory('Calendar', function($http) {
-  var baseURL = 'http://localhost:3001/';
+  var baseURL = 'http://petulant-batman.herokuapp.com/';
   var calendarService = {};
 
   function link(uuid) {
@@ -35,7 +35,6 @@ app.factory('Calendar', function($http) {
       event_list.events.push(event);
     });
 
-    console.log(event_list);
     console.log(JSON.stringify(event_list));
     return $http.post(baseURL + "event_lists.json", event_list);
   };
