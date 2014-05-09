@@ -11,7 +11,7 @@
 
         <div ng-show='showDetails'>
           <input class="checkbox checkbox-inline" type="checkbox" ng-model='checked' ng-click="addOrRemoveFromEvents(checked, course)">
-          <span class="btn btn-link" ng-click='showLectures = !showLectures'>Luennot</span>
+          <span class="btn btn-link" ng-click='showLectures = !showLectures'>Lectures</span>
           <div ng-show='showLectures'>
             <ul>
               <li ng-repeat="lecture in course.lectures">
@@ -25,7 +25,8 @@
 
   </div>
   <div class="col-md-6 col-sm-6">
-
+    <h4>Link to your calendar:</h4>
+    <input class="full-width" type="text" ng-model="calLink" disabled>
 
     <h4>Selected events:</h4>
     <ul>

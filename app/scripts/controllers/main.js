@@ -2,12 +2,22 @@
 
 var app = angular.module('massiveWallhackApp');
 
-app.controller('MainCtrl', function ($scope, Courses) {
+app.controller('MainCtrl', function ($scope, Courses, Uuid, Calendar) {
   $scope.events = {};
   $scope.eventKeys = [];
+  $scope.uuid = Uuid.generate();
+  $scope.calLink = Calendar.getLink($scope.uuid);
+  $scope.showEvents = false;
   Courses.all().success(function (data, status, headers, config) {
     console.log(data);
     $scope.courses = data;
+  });
+
+  Calendar.get("sa").success(function(data,status, headers, config){
+    console.log(data);
+    console.log(status);
+    console.log(headers);
+    console.log(config);
   });
 
   $scope.addOrRemoveFromEvents = function (checked, course) {
@@ -25,6 +35,14 @@ app.controller('MainCtrl', function ($scope, Courses) {
     }
 
     $scope.eventKeys = Object.keys($scope.events);
+
+    Calendar.create($scope.uuid, $scope.events).success(function(data,status, headers, config){
+      console.log(data);
+      console.log(status);
+      console.log(headers);
+      console.log(config);
+      $scope.showEvents = true;
+    });
 
     Object.keys($scope.events).forEach(function (eventId) {
       console.log($scope.events[eventId]);
