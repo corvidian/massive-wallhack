@@ -13,12 +13,14 @@ app.controller('MainCtrl', function ($scope, Courses, Uuid, Calendar) {
     $scope.courses = data;
   });
 
+  /*
   Calendar.get("sa").success(function(data,status, headers, config){
     console.log(data);
     console.log(status);
     console.log(headers);
     console.log(config);
   });
+*/
 
   $scope.addOrRemoveFromEvents = function (checked, course) {
     if (checked) {
@@ -43,10 +45,5 @@ app.controller('MainCtrl', function ($scope, Courses, Uuid, Calendar) {
       console.log(config);
       $scope.showEvents = true;
     });
-
-    Object.keys($scope.events).forEach(function (eventId) {
-      console.log($scope.events[eventId]);
-    });
-    console.log(Object.keys($scope.events));
   }
 });
