@@ -9,6 +9,10 @@ TKTL:n kurssien aikataulut -> Google Calendar
 * Käyttäjän kalenteritietojen muistaminen
 * Kalenterin esikatselu
 
+Live Demo:
+----------
+http://massive-wallhack.herokuapp.com
+
 Backendit:
 ---------
 * Kurssitiedot: https://github.com/Corvidian/mustached-wookie
