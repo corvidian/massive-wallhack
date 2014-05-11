@@ -10,31 +10,32 @@ app.controller('MainCtrl', function ($scope, Courses, Uuid, Calendar) {
   $scope.showEvents = false;
   Courses.all().success(function (data, status, headers, config) {
     console.log(data);
-    $scope.courses = data;
+    $scope.courses = data.courses;
   });
 
-  $scope.addOrRemoveFromEvents = function (checked, course) {
+  $scope.addOrRemoveFromEvents = function (checked, course, group) {
     if (checked) {
-      course.lectures.forEach(function (lecture) {
-        delete $scope.events[lecture.event_id];
+      group.exercises.forEach(function (lecture) {
+        lecture.name = course.name + " " + group.name + " luento";
+        $scope.events[lecture.event_id] = lecture;
       });
     }
 
     else {
-      course.lectures.forEach(function (lecture) {
-        lecture.name = course.name + " luento";
-        $scope.events[lecture.event_id] = lecture;
+      group.exercises.forEach(function (lecture) {
+        delete $scope.events[lecture.event_id];
       });
     }
 
     $scope.eventKeys = Object.keys($scope.events);
 
-    Calendar.create($scope.uuid, $scope.events).success(function(data,status, headers, config){
-      console.log(data);
-      console.log(status);
-      console.log(headers);
-      console.log(config);
-      $scope.showEvents = true;
-    });
+    /*    Calendar.create($scope.uuid, $scope.events).success(function(data,status, headers, config){
+     console.log(data);
+     console.log(status);
+     console.log(headers);
+     console.log(config);
+     $scope.showEvents = true;
+     });
+     */
   }
 });

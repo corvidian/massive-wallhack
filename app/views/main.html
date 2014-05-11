@@ -10,15 +10,19 @@
         <span class="btn btn-link" ng-click='showDetails = !showDetails'>{{course.name}}</span>
 
         <div ng-show='showDetails'>
-          <input class="checkbox checkbox-inline" type="checkbox" ng-model='checked' ng-click="addOrRemoveFromEvents(checked, course)">
-          <span class="btn btn-link" ng-click='showLectures = !showLectures'>Lectures</span>
-          <div ng-show='showLectures'>
-            <ul>
-              <li ng-repeat="lecture in course.lectures">
-                {{lecture.start|date:'dd.MM. HH:mm'}}
+          <ul>
+              <li ng-repeat="group in course.exercise_groups">
+                  <input class="checkbox checkbox-inline" type="checkbox" ng-model='checked' ng-change="addOrRemoveFromEvents(checked, course, group)">
+                  <span class="btn btn-link" ng-click='showLectures = !showLectures'>{{group.name}}</span>
+                  <div ng-show='showLectures'>
+                      <ul>
+                          <li ng-repeat="lecture in group.exercises">
+                              {{lecture.start|date:'dd.MM. HH:mm'}}
+                          </li>
+                      </ul>
+                  </div>
               </li>
-            </ul>
-          </div>
+          </ul>
         </div>
       </li>
     </ul>

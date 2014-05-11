@@ -1,7 +1,7 @@
 var app = angular.module('massiveWallhackApp');
 
 app.factory('Courses', function($http) {
-  var URL = 'http://mustached-wookie.herokuapp.com/courses.json';
+  var URL = 'http://localhost:3000/courses.json';
 
   var coursesService = {};
   coursesService.all = function() {
@@ -24,14 +24,14 @@ app.factory('Calendar', function($http) {
     event_list.uid = uuid;
     event_list.events = [];
 
-    console.log( Object.keys(events));
+    //console.log( Object.keys(events));
     Object.keys(events).forEach(function (eventId) {
       var event = {};
       event.start = events[eventId].start;
       event.length = events[eventId].length;
       event.name = events[eventId].name;
       event.place = events[eventId].place;
-      console.log(event);
+      //console.log(event);
       event_list.events.push(event);
     });
 
@@ -41,11 +41,11 @@ app.factory('Calendar', function($http) {
 
   calendarService.get = function(uuid) {
     return $http.get(link(uuid));
-  }
+  };
 
   calendarService.getLink = function(uuid) {
     return link(uuid);
-  }
+  };
 
   return calendarService;
 });
