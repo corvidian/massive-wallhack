@@ -16,7 +16,7 @@ app.controller('MainCtrl', function ($scope, Courses, Uuid, Calendar) {
   $scope.addOrRemoveFromEvents = function (checked, course, group) {
     if (checked) {
       group.exercises.forEach(function (lecture) {
-        lecture.name = course.name + " " + group.name;
+        lecture.name = course.name + ' ' + group.name;
         $scope.events[lecture.event_id] = lecture;
       });
     }
@@ -37,5 +37,5 @@ app.controller('MainCtrl', function ($scope, Courses, Uuid, Calendar) {
       $scope.showEvents = true;
     });
 
-  }
+  };
 });

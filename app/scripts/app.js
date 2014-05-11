@@ -2,7 +2,8 @@
 
 var app = angular.module('massiveWallhackApp', [
     'ngResource',
-    'ngRoute'
+    'ngRoute',
+    'ui.bootstrap'
   ]);
 
 app.config(function ($routeProvider) {
