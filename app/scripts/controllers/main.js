@@ -16,7 +16,7 @@ app.controller('MainCtrl', function ($scope, Courses, Uuid, Calendar) {
   $scope.addOrRemoveFromEvents = function (checked, course, group) {
     if (checked) {
       group.exercises.forEach(function (lecture) {
-        lecture.name = course.name + " " + group.name + " luento";
+        lecture.name = course.name + " " + group.name;
         $scope.events[lecture.event_id] = lecture;
       });
     }
@@ -29,13 +29,13 @@ app.controller('MainCtrl', function ($scope, Courses, Uuid, Calendar) {
 
     $scope.eventKeys = Object.keys($scope.events);
 
-    /*    Calendar.create($scope.uuid, $scope.events).success(function(data,status, headers, config){
-     console.log(data);
-     console.log(status);
-     console.log(headers);
-     console.log(config);
-     $scope.showEvents = true;
-     });
-     */
+    Calendar.create($scope.uuid, $scope.events).success(function (data, status, headers, config) {
+      console.log(data);
+      console.log(status);
+      console.log(headers);
+      console.log(config);
+      $scope.showEvents = true;
+    });
+     
   }
 });
