@@ -2,7 +2,7 @@
   "name": "massivewallhack",
   "version": "0.0.0",
   "dependencies": {
-    "express": "~3.4.4",
+    "express": "~3.4.8",
     "gzippo": "~0.2.0"
   },
   "devDependencies": {
