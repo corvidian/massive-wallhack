@@ -36,6 +36,6 @@ app.controller('MainCtrl', function ($scope, Courses, Uuid, Calendar) {
       console.log(config);
       $scope.showEvents = true;
     });
-     
+
   }
 });
