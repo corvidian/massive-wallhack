@@ -1,0 +1,27 @@
+<accordion close-others="false">
+    <accordion-group is-open="openCourse" ng-repeat="course in courses|orderBy:'name'|filter:query">
+        <accordion-heading>
+            {{course.name}}
+            <i class="pull-right glyphicon"
+               ng-class="{'glyphicon-chevron-down': openCourse, 'glyphicon-chevron-right': !openCourse}"></i>
+        </accordion-heading>
+        <accordion close-others="false">
+            <accordion-group is-open="openGroup" ng-repeat="group in course.exercise_groups">
+                <accordion-heading>
+                    <input type="checkbox" ng-model="group.checked"
+                           ng-change="check(course, group, $event)"
+                           ng-click="click($event)">
+                    {{group.name}}
+                    <i class="pull-right glyphicon"
+                       ng-class="{'glyphicon-chevron-down': openGroup, 'glyphicon-chevron-right': !openGroup}"></i>
+                </accordion-heading>
+                <ul>
+                    <li ng-repeat="lecture in group.exercises">
+                        {{lecture.start|date:'dd.MM. HH:mm'}}
+                    </li>
+                </ul>
+            </accordion-group>
+        </accordion>
+
+    </accordion-group>
+</accordion>

@@ -7,33 +7,8 @@
             <input ng-model="query" class="form-control" placeholder="Filter">
         </div>
 
-        <accordion close-others="false">
-            <accordion-group is-open="openCourse" ng-repeat="course in courses|orderBy:'name'|filter:query">
-                <accordion-heading>
-                    {{course.name}}
-                    <i class="pull-right glyphicon"
-                       ng-class="{'glyphicon-chevron-down': openCourse, 'glyphicon-chevron-right': !openCourse}"></i>
-                </accordion-heading>
-                <accordion close-others="false">
-                    <accordion-group is-open="openGroup" ng-repeat="group in course.exercise_groups">
-                        <accordion-heading>
-                            <input type="checkbox" ng-model="group.checked"
-                                   ng-change="addOrRemoveFromEvents(course, group, $event)"
-                                   ng-click="click($event)">
-                            {{group.name}}
-                            <i class="pull-right glyphicon"
-                               ng-class="{'glyphicon-chevron-down': openGroup, 'glyphicon-chevron-right': !openGroup}"></i>
-                        </accordion-heading>
-                        <ul>
-                            <li ng-repeat="lecture in group.exercises">
-                                {{lecture.start|date:'dd.MM. HH:mm'}}
-                            </li>
-                        </ul>
-                    </accordion-group>
-                </accordion>
+        <cbox courses="courses" check="addOrRemoveFromEvents" click="click"></cbox>
 
-            </accordion-group>
-        </accordion>
     </div>
 
     <div class="col-md-6 col-sm-6" ng-show="showEvents">
@@ -46,22 +21,7 @@
         <a href="{{calLink}}" class="full-width" type="text" ng-model="calLink" disabled>{{calLink}}</a>
 
         <h4>Selected events:</h4>
-        <table class="table table-condensed table-striped table-bordered">
-            <thead>
-                <tr>
-                    <th>Event</th>
-                    <th>Place</th>
-                    <th>Start</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="event in events">
-                    <td>{{event.name}}</td>
-                    <td>{{event.place}}</td>
-                    <td>{{event.start|date:'dd.MM. HH:mm'}}</td>
-                </tr>
-            </tbody>
-        </table>
+        <eventtable events="events"></eventtable>
 
     </div>
 </div>
