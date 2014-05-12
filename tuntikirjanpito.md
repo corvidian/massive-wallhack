@@ -9,3 +9,4 @@ Pvm    | Aika | Edistyminen
 9.5.   |12h   |Kalenterien rakentaminen
 10.5.  |4h    |Laskarit backendiin
 11.5.  |7h    |Laskarit fronttiin, frontin kaunistamista
+Yht    |49h   |
