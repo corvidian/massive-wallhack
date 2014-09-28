@@ -7,7 +7,9 @@
             <input ng-model="query" class="form-control" placeholder="Filter">
         </div>
 
-        <cbox courses="courses" check="addOrRemoveFromEvents" click="click"></cbox>
+        <div cg-busy="promise">
+            <cbox courses="courses" check="addOrRemoveFromEvents" click="click" query="query"></cbox>
+        </div>
 
     </div>
 
@@ -15,13 +17,18 @@
         <!--Right column content-->
         <h4>Link to your calendar:
             <span class="pull-right glyphicon glyphicon-floppy-saved" style="color: green" ng-show="saved"></span>
-            <!-- <span class="pull-right glyphicon glyphicon-floppy-save" style="color: black" ng-show="saving"></span>-->
-            <span class="pull-right glyphicon glyphicon-floppy-remove" style="color: darkred" ng-show="saveError"></span>
+            <span class="pull-right glyphicon glyphicon-floppy-save" style="color: black" ng-show="saving"></span>
+            <span class="pull-right glyphicon glyphicon-floppy-remove" style="color: darkred"
+                  ng-show="saveError"></span>
         </h4>
         <a href="{{calLink}}" class="full-width" type="text" ng-model="calLink" disabled>{{calLink}}</a>
 
         <h4>Selected events:</h4>
         <eventtable events="events"></eventtable>
 
+    </div>
+
+    <div class="col-md-6 col-sm-6" ng-hide="showEvents">
+        <h4>Choose some courses and your calendar will be linked here.</h4>
     </div>
 </div>

@@ -3,7 +3,8 @@
 var app = angular.module('massiveWallhackApp', [
     'ngResource',
     'ngRoute',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'cgBusy'
   ]);
 
 app.config(function ($routeProvider) {

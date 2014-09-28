@@ -10,8 +10,8 @@ app.controller('MainCtrl', function ($scope, Courses, Uuid, Calendar) {
   $scope.showEvents = false;
   $scope.saved = false;
 
-  Courses.all().success(function (data) {
-    console.log(data);
+  $scope.promise = Courses.all().success(function (data) {
+    //console.log(data);
     $scope.courses = data.courses;
     $scope.courses.forEach(function(course) {
       course.exercise_groups.forEach(function(group){
@@ -28,8 +28,9 @@ app.controller('MainCtrl', function ($scope, Courses, Uuid, Calendar) {
     $scope.saved = false;
     $scope.saveError = false;
     $scope.saving = true;
-    console.log("Checked: " + group.checked);
+    //console.log("Checked: " + group.checked);
     if (group.checked) {
+      $scope.showEvents = true;
       group.exercises.forEach(function (lecture) {
         lecture.name = course.name + ' ' + group.name;
         $scope.events[lecture.event_id] = lecture;
@@ -46,11 +47,10 @@ app.controller('MainCtrl', function ($scope, Courses, Uuid, Calendar) {
 
 
     Calendar.create($scope.uuid, $scope.events).success(function (data, status, headers, config) {
-      console.log(data);
-      console.log(status);
-      console.log(headers);
-      console.log(config);
-      $scope.showEvents = true;
+      //console.log(data);
+      //console.log(status);
+      //console.log(headers);
+      //console.log(config);
       $scope.saving = false;
       if (status == 201) $scope.saved = true;
       else $scope.saveError = true;

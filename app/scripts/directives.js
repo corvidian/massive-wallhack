@@ -7,7 +7,8 @@ app.directive('cbox', function() {
     scope: {
       courses:'=',
       check: '=',
-      click:'='
+      click:'=',
+      query: '='
     },
     templateUrl: 'views/box.html'
   };
